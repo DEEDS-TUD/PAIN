@@ -1,0 +1,13 @@
+diff --git a/drivers/mmc/host/goldfish.c b/drivers/mmc/host/goldfish.c
+index 12c718f..614ca2d 100644
+--- a/drivers/mmc/host/goldfish.c
++++ b/drivers/mmc/host/goldfish.c
+@@ -57,6 +57,8 @@
+ #include <asm/io.h>
+ #include <asm/uaccess.h>
+ 
++MODULE_LICENSE("GPL");
++
+ #define DRIVER_NAME "goldfish_mmc"
+ 
+ #define BUFFER_SIZE   16384

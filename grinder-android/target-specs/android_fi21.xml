@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<target>
+	<cue_abstraction>
+		<name>de.grinder.android_fi.EmulatedAndroid</name>
+	</cue_abstraction>
+	<servers>
+		<server>
+			<class>de.grinder.executor.servers.TCPServer</class>
+			<port>4464</port>
+		</server>
+	</servers>
+</target>
