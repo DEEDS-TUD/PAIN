@@ -1,0 +1,12 @@
+# auto-generated environment setup script
+env.sh
+Makefile.env
+
+# log files
+*.log
+
+# generated tags files (ctags)
+tags
+
+# downloaded mcpp
+mcpp-2.7.2

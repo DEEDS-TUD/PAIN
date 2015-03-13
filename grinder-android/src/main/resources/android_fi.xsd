@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="target">
+		<xs:complexType> <xs:all>
+			<xs:element name="cue_abstraction">
+				<xs:complexType> <xs:all>
+					<xs:element name="name" type="xs:string"/>
+				</xs:all> </xs:complexType>
+			</xs:element>
+			<xs:element name="servers">
+				<xs:complexType> <xs:all>
+					<xs:element name="server">
+						<xs:complexType> <xs:all>
+							<xs:element name="class" type="xs:string"/>
+							<xs:element name="port" type="xs:short"/>
+						</xs:all> </xs:complexType>
+					</xs:element>
+				</xs:all> </xs:complexType>
+			</xs:element>
+		</xs:all> </xs:complexType>
+	</xs:element>
+</xs:schema>

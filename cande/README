@@ -1,0 +1,11 @@
+NOTES:
+  the sar parser is written to accept only decimal point representation, hence
+  it is necessary to set the system locale to support decimal point instead of
+  comma. (e.g. en_US)
+
+1. build cande_heavy_detector and cande_light_detector with ``make android``
+2. build the sar tool and library, see folder ``sar-android``
+2. build an Android system image containing CANDE (including sar, heavy and
+   light detector) with ``gen-system-imgage.sh`` (see ``scripts``)
+3. run the emulator using the custom system image
+

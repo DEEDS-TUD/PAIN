@@ -1,0 +1,10 @@
+--- scripts/basic/fixdep.c.orig	2012-11-07 15:39:11.937817997 +0100
++++ scripts/basic/fixdep.c	2012-11-07 15:38:42.837315929 +0100
+@@ -324,6 +324,7 @@
+ 		if (p == end) {
+ 			do p--; while (!isalnum(*p));
+ 			p++;
++			if(p<m) { break; }   // BUGFIX
+ 		}
+ 		memcpy(s, m, p-m); s[p-m] = 0;
+ 		if (strrcmp(s, "include/linux/autoconf.h") &&
