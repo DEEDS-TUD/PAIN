@@ -1,0 +1,20 @@
+--- scripts/genksyms/genksyms.c.orig	2012-11-07 16:45:48.852998290 +0100
++++ scripts/genksyms/genksyms.c	2012-11-07 16:56:20.216367209 +0100
+@@ -34,7 +34,7 @@
+ #include "genksyms.h"
+ /*----------------------------------------------------------------------*/
+ 
+-#define HASH_BUCKETS  4096
++#define HASH_BUCKETS  4096+1 	// BUGFIX
+ 
+ static struct symbol *symtab[HASH_BUCKETS];
+ static FILE *debugfile;
+@@ -160,7 +160,7 @@
+ struct symbol *add_symbol(const char *name, enum symbol_type type,
+ 			  struct string_list *defn, int is_extern)
+ {
+-	unsigned long h = crc32(name) % HASH_BUCKETS;
++	unsigned long h = ((name==0) ? HASH_BUCKETS : crc32(name) % HASH_BUCKETS); // BUGFIX
+ 	struct symbol *sym;
+ 
+ 	for (sym = symtab[h]; sym; sym = sym->hash_next) {

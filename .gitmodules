@@ -1,0 +1,6 @@
+[submodule "GRINDER"]
+	path = GRINDER
+	url = https://github.com/DEEDS-TUD/GRINDER
+[submodule "goldfish_kernel"]
+	path = goldfish_kernel
+	url = https://android.googlesource.com/kernel/goldfish.git

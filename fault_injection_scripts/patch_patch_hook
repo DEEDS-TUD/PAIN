@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#make sure that some built-in echo doesn't treat \n as an escape sequence
+/bin/echo '{
+  static int printkd;
+  if(!printkd) {
+    printk("'"$1-fault injection ($2 $3)\n"'");
+    printkd = 1;
+  }
+}'
