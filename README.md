@@ -86,6 +86,10 @@ Ensure that you have sourced the *env.sh* file to have a suitable environment fo
 To configure the Goldfish kernel to support loadable kernel modules, you can use one of the kernel config files provided in in the `config` directory.
 Depending on the kernel version you target, copy `config/config-2.6` or `config/config-3.4` to `goldfish_kernel` and rename the configuration file to `.config`.
 
+To build the kernel execute
+
+	AFI_HOME/goldfish_kernel $ make
+
 Note: If you want to use the Goldfish MMC driver as module you need to declare a *LICENSE\_MODULE("GPL");* in order to enable it to access the required kernel API. You can apply the *config/gpl\_goldfish.patch* patch to make this change:
 
 	AFI_HOME/goldfish_kernel $ patch -p1 -i ../config/gpl_goldfish.patch
