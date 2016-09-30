@@ -14,9 +14,6 @@ struct detection_metrics {
 	unsigned int memfree;
 	unsigned int run;
 	unsigned int blk;
-#if 0 /* not available on android */
-	float util;
-#endif
 };
 
 struct cpu_metrics {
