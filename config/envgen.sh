@@ -13,7 +13,7 @@
 #   OUT_SCRIPT="<path>" envgen.sh
 #
 
-
+echo "executing"
 THIS_SCRIPT="$0"
 OUT_SCRIPT=${OUT_SCRIPT-"env.sh"}
 OUT_MAKEFILE="Makefile.env"
@@ -844,7 +844,7 @@ SCRIPT-OUTPUT-DELIM
   set +e
 
   local UNSET_PATHS="$(grep -e "$INVALID_PATH" -e "$SKIPPED_PATH" "$OUT_SCRIPT")"
-  if [ -n "UNSET_PATHS" ]
+  if [ -n "$UNSET_PATHS" ]
   then
     echo "Script run complete, exiting with an error due to unset paths:"
     echo "$UNSET_PATHS"
