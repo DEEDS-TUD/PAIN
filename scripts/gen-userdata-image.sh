@@ -8,7 +8,6 @@
 # REQUIRES
 #   - correct env setup (env.sh)
 #   - already built binaries and modules
-#     - grinder LKM
 #     - CANDE heavy detector LKM
 #     - CANDE light detector executable
 #     - sysstat for android, i.e., sar executable and sadc library
@@ -56,8 +55,6 @@ CREATE_DIRS+=("$AVDSYS_LIB/sa")
 # files to copy to target image
 # pair of arrays, one for source, other for destination; destination must contain full
 # path including file name; two entries belong together if they have the same array index
-COPY_FILES_SRC+=("$AFI_GRINDER_LKM_DIR/${AFI_GRINDER_LKM_NAME}.ko")
-COPY_FILES_DST+=("$AVDSYS_MOD/${AFI_GRINDER_LKM_NAME}.ko")
 COPY_FILES_SRC+=("$AFI_MOD_PATH")
 COPY_FILES_DST+=("$AVDSYS_MOD/${AFI_MOD_NAME}_orig.ko")
 COPY_FILES_SRC+=("$AFI_CANDE_HEAVY_DIR/${AFI_CANDE_HEAVY_NAME}.ko")

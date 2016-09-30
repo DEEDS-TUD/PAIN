@@ -132,13 +132,6 @@ The mutants are stored to a directory named after the targeted lkm, which reside
 	   	AFI_HOME/config $ sudo ./uninstall_mcpp.sh
 
 
-### Build grinder module
-
-Ensure that your environment setup is correct (see `env.sh` above) and build the GRINDER LKM as follows:
-
-	AFI_HOME/grinder-lkm $ make
-
-
 ### Build CANDE detectors
 
 Ensure that your environment setup is correct (see `env.sh` above) and build the CANDE detectors and dependencies as follows:
@@ -174,7 +167,7 @@ Ensure that your environment setup is correct (see `env.sh` above) and build the
 
 	AFI_HOME/scripts $ ./gen-userdata-image.sh
 
-This should generate a custom userdata image (and a vanilla copy of it) that contains the CANDE detectors as well as the GRINDER LKM.
+This should generate a custom userdata image (and a vanilla copy of it) that contains the CANDE detectors.
 Note that this may only work for Android systems with kernel 3.4 and above (and a recent API level).
 Note that the userdata image generation may need some time since the Android emulator is involved.
 
