@@ -208,7 +208,7 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
             remove(testFile);
         }
 
-        sprintf(resultchars, " Files deleted \n", testFile);
+        sprintf(resultchars, " Files deleted \n");
         return (*env)->NewStringUTF(env, resultchars);
     }
     for (i=0; i<262144; i++)
