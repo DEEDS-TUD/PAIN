@@ -182,7 +182,7 @@ static int get_family_id(int sd)
 
 	rep_len = recv(sd, &ans, sizeof(ans), 0);
 	if (ans.n.nlmsg_type == NLMSG_ERROR ||
-	    (rep_len < 0) || !NLMSG_OK((&ans.n), rep_len))
+	    (rep_len < 0) || !NLMSG_OK((&ans.n), (uint)rep_len))
 		return 0;
 
 	na = (struct nlattr *)GENLMSG_DATA(&ans);
