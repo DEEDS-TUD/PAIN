@@ -68,52 +68,52 @@
  * structure is set to 0.
  */
 struct io_stats {
-	/* # of sectors read */
-	unsigned long long rd_sectors	__attribute__ ((aligned (8)));
-	/* # of sectors written */
-	unsigned long long wr_sectors	__attribute__ ((packed));
-	/* # of read operations issued to the device */
-	unsigned long rd_ios		__attribute__ ((packed));
-	/* # of read requests merged */
-	unsigned long rd_merges		__attribute__ ((packed));
-	/* Time of read requests in queue */
-	unsigned long rd_ticks		__attribute__ ((packed));
-	/* # of write operations issued to the device */
-	unsigned long wr_ios		__attribute__ ((packed));
-	/* # of write requests merged */
-	unsigned long wr_merges		__attribute__ ((packed));
-	/* Time of write requests in queue */
-	unsigned long wr_ticks		__attribute__ ((packed));
-	/* # of I/Os in progress */
-	unsigned long ios_pgr		__attribute__ ((packed));
-	/* # of ticks total (for this device) for I/O */
-	unsigned long tot_ticks		__attribute__ ((packed));
-	/* # of ticks requests spent in queue */
-	unsigned long rq_ticks		__attribute__ ((packed));
-	/* # of I/O done since last reboot */
-	unsigned long dk_drive		__attribute__ ((packed));
-	/* # of blocks read */
-	unsigned long dk_drive_rblk	__attribute__ ((packed));
-	/* # of blocks written */
-	unsigned long dk_drive_wblk	__attribute__ ((packed));
+    /* # of sectors read */
+    unsigned long long rd_sectors	__attribute__ ((aligned (8)));
+    /* # of sectors written */
+    unsigned long long wr_sectors	__attribute__ ((packed));
+    /* # of read operations issued to the device */
+    unsigned long rd_ios		__attribute__ ((packed));
+    /* # of read requests merged */
+    unsigned long rd_merges		__attribute__ ((packed));
+    /* Time of read requests in queue */
+    unsigned long rd_ticks		__attribute__ ((packed));
+    /* # of write operations issued to the device */
+    unsigned long wr_ios		__attribute__ ((packed));
+    /* # of write requests merged */
+    unsigned long wr_merges		__attribute__ ((packed));
+    /* Time of write requests in queue */
+    unsigned long wr_ticks		__attribute__ ((packed));
+    /* # of I/Os in progress */
+    unsigned long ios_pgr		__attribute__ ((packed));
+    /* # of ticks total (for this device) for I/O */
+    unsigned long tot_ticks		__attribute__ ((packed));
+    /* # of ticks requests spent in queue */
+    unsigned long rq_ticks		__attribute__ ((packed));
+    /* # of I/O done since last reboot */
+    unsigned long dk_drive		__attribute__ ((packed));
+    /* # of blocks read */
+    unsigned long dk_drive_rblk	__attribute__ ((packed));
+    /* # of blocks written */
+    unsigned long dk_drive_wblk	__attribute__ ((packed));
 };
 
 #define IO_STATS_SIZE	(sizeof(struct io_stats))
 
 struct io_hdr_stats {
-	unsigned int active		__attribute__ ((aligned (4)));
-	unsigned int used		__attribute__ ((packed));
-	char name[MAX_NAME_LEN];
+    unsigned int active		__attribute__ ((aligned (4)));
+    unsigned int used		__attribute__ ((packed));
+    char name[MAX_NAME_LEN];
 };
 
 #define IO_HDR_STATS_SIZE	(sizeof(struct io_hdr_stats))
 
 /* List of devices entered on the command line */
 struct io_dlist {
-	/* Indicate whether its partitions are to be displayed or not */
-	int disp_part			__attribute__ ((aligned (4)));
-	/* Device name */
-	char dev_name[MAX_NAME_LEN];
+    /* Indicate whether its partitions are to be displayed or not */
+    int disp_part			__attribute__ ((aligned (4)));
+    /* Device name */
+    char dev_name[MAX_NAME_LEN];
 };
 
 #define IO_DLIST_SIZE	(sizeof(struct io_dlist))

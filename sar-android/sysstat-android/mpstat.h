@@ -68,8 +68,8 @@
  * ...
  */
 struct stats_irqcpu {
-	unsigned int interrupt        __attribute__ ((aligned (4)));
-	char         irq_name[MAX_IRQ_LEN];
+    unsigned int interrupt        __attribute__ ((aligned (4)));
+    char         irq_name[MAX_IRQ_LEN];
 };
 
 #define STATS_IRQCPU_SIZE      (sizeof(struct stats_irqcpu))

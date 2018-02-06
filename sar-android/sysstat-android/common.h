@@ -143,10 +143,10 @@ extern unsigned int kb_shift;
 
 /* Structure used for extended disk statistics */
 struct ext_disk_stats {
-	double util;
-	double await;
-	double svctm;
-	double arqsz;
+    double util;
+    double await;
+    double svctm;
+    double arqsz;
 };
 
 
@@ -157,47 +157,47 @@ struct ext_disk_stats {
  */
 
 extern void
-	compute_ext_disk_stats(struct stats_disk *, struct stats_disk *,
-			       unsigned long long, struct ext_disk_stats *);
+compute_ext_disk_stats(struct stats_disk *, struct stats_disk *,
+                       unsigned long long, struct ext_disk_stats *);
 extern int
-	count_bits(void *, int);
+count_bits(void *, int);
 extern int
-	count_csvalues(int, char **);
+count_csvalues(int, char **);
 extern char *
-	device_name(char *);
+device_name(char *);
 extern void
-	get_HZ(void);
+get_HZ(void);
 extern unsigned int
-	get_devmap_major(void);
+get_devmap_major(void);
 extern unsigned long long
-	get_interval(unsigned long long, unsigned long long);
+get_interval(unsigned long long, unsigned long long);
 extern void
-	get_kb_shift(void);
+get_kb_shift(void);
 extern time_t
-	get_localtime(struct tm *);
+get_localtime(struct tm *);
 extern time_t
-	get_time(struct tm *);
+get_time(struct tm *);
 unsigned long long
-	get_per_cpu_interval(struct stats_cpu *, struct stats_cpu *);
+get_per_cpu_interval(struct stats_cpu *, struct stats_cpu *);
 extern int
-	get_sysfs_dev_nr(int);
+get_sysfs_dev_nr(int);
 extern int
-	get_win_height(void);
+get_win_height(void);
 extern void
-	init_nls(void);
+init_nls(void);
 extern int
-	is_device(char *);
+is_device(char *);
 extern double
-	ll_s_value(unsigned long long, unsigned long long, unsigned long long);
+ll_s_value(unsigned long long, unsigned long long, unsigned long long);
 extern double
-	ll_sp_value(unsigned long long, unsigned long long, unsigned long long);
+ll_sp_value(unsigned long long, unsigned long long, unsigned long long);
 extern int
-	print_gal_header(struct tm *, char *, char *, char *, char *, int);
+print_gal_header(struct tm *, char *, char *, char *, char *, int);
 extern void
-	print_version(void);
+print_version(void);
 #ifdef DEBUG
 extern void
-	sysstat_panic(const char *, int);
+sysstat_panic(const char *, int);
 #endif
 
 #endif  /* _COMMON_H */

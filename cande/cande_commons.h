@@ -7,19 +7,19 @@
 
 
 struct detection_metrics {
-	unsigned int num_cpus;
-	struct cpu_metrics *cpu;
-	unsigned int cs;
-	unsigned int pswpout;
-	unsigned int memfree;
-	unsigned int run;
-	unsigned int blk;
+    unsigned int num_cpus;
+    struct cpu_metrics *cpu;
+    unsigned int cs;
+    unsigned int pswpout;
+    unsigned int memfree;
+    unsigned int run;
+    unsigned int blk;
 };
 
 struct cpu_metrics {
-	unsigned int sys;
-	unsigned int usr;
-	unsigned int iowait;
+    unsigned int sys;
+    unsigned int usr;
+    unsigned int iowait;
 };
 
 /* error classes */

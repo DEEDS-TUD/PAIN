@@ -30,21 +30,21 @@
 #define NR_CIFS_PREALLOC	2
 
 struct cifs_stats {
-	unsigned long long rd_bytes     __attribute__ ((aligned (8)));
-	unsigned long long wr_bytes     __attribute__ ((packed));
-	unsigned long long rd_ops       __attribute__ ((packed));
-	unsigned long long wr_ops       __attribute__ ((packed));
-	unsigned long long fopens       __attribute__ ((packed));
-	unsigned long long fcloses      __attribute__ ((packed));
-	unsigned long long fdeletes     __attribute__ ((packed));
+    unsigned long long rd_bytes     __attribute__ ((aligned (8)));
+    unsigned long long wr_bytes     __attribute__ ((packed));
+    unsigned long long rd_ops       __attribute__ ((packed));
+    unsigned long long wr_ops       __attribute__ ((packed));
+    unsigned long long fopens       __attribute__ ((packed));
+    unsigned long long fcloses      __attribute__ ((packed));
+    unsigned long long fdeletes     __attribute__ ((packed));
 };
 
 #define CIFS_STATS_SIZE	(sizeof(struct cifs_stats))
 
 struct io_hdr_stats {
-	unsigned int active		__attribute__ ((aligned (4)));
-	unsigned int used		__attribute__ ((packed));
-	char name[MAX_NAME_LEN];
+    unsigned int active		__attribute__ ((aligned (4)));
+    unsigned int used		__attribute__ ((packed));
+    char name[MAX_NAME_LEN];
 };
 
 #define IO_HDR_STATS_SIZE	(sizeof(struct io_hdr_stats))

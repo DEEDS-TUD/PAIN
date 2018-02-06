@@ -22,63 +22,63 @@ import de.grinder.android_fi.Emulator.EmulatorConfiguration;
  */
 public class EmulatorFactory {
 
-  /** The singleton instance of this factory. */
-  private static EmulatorFactory instance = new EmulatorFactory();
+    /** The singleton instance of this factory. */
+    private static EmulatorFactory instance = new EmulatorFactory();
 
-  /** Next emulator ID to use. */
-  private int nextId = 0;
+    /** Next emulator ID to use. */
+    private int nextId = 0;
 
-  /** NExt emulator control port to use. */
-  private int nextControlPort = 5554;
+    /** NExt emulator control port to use. */
+    private int nextControlPort = 5554;
 
-  /**
-   * Compute the next unique emulator ID.
-   * 
-   * @return The next emulator ID to use.
-   */
-  private int nextId() {
-    return nextId++;
-  }
+    /**
+     * Compute the next unique emulator ID.
+     *
+     * @return The next emulator ID to use.
+     */
+    private int nextId() {
+        return nextId++;
+    }
 
-  /**
-   * Compute the next free emulator control port to use. Note that external port conflicts
-   * are not detected.
-   * 
-   * @return The next control port to use.
-   */
-  private int nextControlPort() {
-    final int tmp = nextControlPort;
-    nextControlPort += 2;
-    return tmp;
-  }
+    /**
+     * Compute the next free emulator control port to use. Note that external port conflicts
+     * are not detected.
+     *
+     * @return The next control port to use.
+     */
+    private int nextControlPort() {
+        final int tmp = nextControlPort;
+        nextControlPort += 2;
+        return tmp;
+    }
 
-  /**
-   * Constructs the factory object. Singleton constructor.
-   */
-  private EmulatorFactory() {
-  }
+    /**
+     * Constructs the factory object. Singleton constructor.
+     */
+    private EmulatorFactory() {
+    }
 
-  /**
-   * Retrieves the only instance of this factory.
-   * 
-   * @return The singleton instance of this factory.
-   */
-  public synchronized static EmulatorFactory getInstance() {
-    return instance;
-  }
+    /**
+     * Retrieves the only instance of this factory.
+     *
+     * @return The singleton instance of this factory.
+     */
+    public synchronized static EmulatorFactory getInstance() {
+        return instance;
+    }
 
-  /**
-   * Create a new {@link Emulator} instance with unique ID and ports.
-   * 
-   * @param expSettings
-   *          Global experiment settings to use for the emulator.
-   * @return A new {@link Emulator} instance.
-   */
-  public synchronized Emulator getNewEmu(final ExperimentSettings expSettings) {
-    final EmulatorConfiguration es = new EmulatorConfiguration(nextId(),
-        nextControlPort(), expSettings);
-    final Emulator emu = new Emulator(es);
-    return emu;
-  }
+    /**
+     * Create a new {@link Emulator} instance with unique ID and ports.
+     *
+     * @param expSettings
+     *          Global experiment settings to use for the emulator.
+     * @return A new {@link Emulator} instance.
+     */
+    public synchronized Emulator getNewEmu(final ExperimentSettings expSettings) {
+        final EmulatorConfiguration es = new EmulatorConfiguration(nextId(),
+                nextControlPort(), expSettings);
+        final Emulator emu = new Emulator(es);
+        return emu;
+    }
 
 }

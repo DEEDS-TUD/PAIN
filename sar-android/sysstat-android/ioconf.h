@@ -45,33 +45,33 @@
 
 
 struct blk_config {
-	char name[IOC_NAMELEN + 1];	/* device basename */
-	char cfmt[IOC_FMTLEN + 1];	/* controller format string */
-	char dfmt[IOC_FMTLEN + 1];	/* disk format string */
-	char pfmt[IOC_FMTLEN + 1];	/* partition format string */
-	/* ctrlno is in the ioc_entry */
-	unsigned int ctrl_explicit;	/* use "cN" in name */
-	unsigned int dcount;		/* number of devices handled by this major */
-	unsigned int pcount;		/* partitions per device */
-	char desc[IOC_DESCLEN + 1];
-	/* disk info unit # conversion function */
-	char *(*cconv)(unsigned int);
+    char name[IOC_NAMELEN + 1];	/* device basename */
+    char cfmt[IOC_FMTLEN + 1];	/* controller format string */
+    char dfmt[IOC_FMTLEN + 1];	/* disk format string */
+    char pfmt[IOC_FMTLEN + 1];	/* partition format string */
+    /* ctrlno is in the ioc_entry */
+    unsigned int ctrl_explicit;	/* use "cN" in name */
+    unsigned int dcount;		/* number of devices handled by this major */
+    unsigned int pcount;		/* partitions per device */
+    char desc[IOC_DESCLEN + 1];
+    /* disk info unit # conversion function */
+    char *(*cconv)(unsigned int);
 
-	/* extension properties (all this for initrd?) */
-	char ext_name[IOC_NAMELEN + 1];
-	unsigned int ext;		/* flag - this is an extension record */
-	unsigned int ext_minor;		/* which minor does this apply to */
+    /* extension properties (all this for initrd?) */
+    char ext_name[IOC_NAMELEN + 1];
+    unsigned int ext;		/* flag - this is an extension record */
+    unsigned int ext_minor;		/* which minor does this apply to */
 };
 
 #define BLK_CONFIG_SIZE	(sizeof(struct blk_config))
 
 
 struct ioc_entry {
-	int live;			/* is this a Direct entry? */
-	unsigned int ctrlno;		/* controller number */
-	unsigned int basemajor;		/* Major number of the template */
-	char *desc;			/* (dynamic) per-controller description */
-	struct blk_config *blkp;	/* the real info, may be a shared ref */
+    int live;			/* is this a Direct entry? */
+    unsigned int ctrlno;		/* controller number */
+    unsigned int basemajor;		/* Major number of the template */
+    char *desc;			/* (dynamic) per-controller description */
+    struct blk_config *blkp;	/* the real info, may be a shared ref */
 };
 
 #define IOC_ENTRY_SIZE	(sizeof(struct ioc_entry))

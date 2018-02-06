@@ -9,22 +9,22 @@ import de.grinder.util.message.MessageType;
 import de.grinder.util.message.Proxy;
 
 class AndroidGrinderProxy extends Proxy {
-  private String conf = null;
+    private String conf = null;
 
-  public AndroidGrinderProxy(final String host, final int port) {
-    super(host, port);
-  }
+    public AndroidGrinderProxy(final String host, final int port) {
+        super(host, port);
+    }
 
-  public File getInstrumentedKernelModule() throws IOException {
-    conf = getConfiguration();
-    return new File(conf.split(" ")[0]);
-  }
+    public File getInstrumentedKernelModule() throws IOException {
+        conf = getConfiguration();
+        return new File(conf.split(" ")[0]);
+    }
 
-  public void sendLog(final String logData) throws IOException {
-    final Message request = new Message(MessageType.LOG);
-    request.setBody(logData.getBytes());
-    final OutputStream out = getSocketOutStream();
-    out.write(request.getBytes());
-    out.flush();
-  }
+    public void sendLog(final String logData) throws IOException {
+        final Message request = new Message(MessageType.LOG);
+        request.setBody(logData.getBytes());
+        final OutputStream out = getSocketOutStream();
+        out.write(request.getBytes());
+        out.flush();
+    }
 }

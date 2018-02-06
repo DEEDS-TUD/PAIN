@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-#include <time.h> 
+#include <time.h>
 
 #include <fcntl.h>
 #include <sys/stat.h>
@@ -39,28 +39,28 @@ int smallSize = 1024;
 
 double getTime()
 {
-  struct timespec tp1;
-  clock_gettime(CLOCK_REALTIME, &tp1);
-  return (double)tp1.tv_sec + (double)tp1.tv_nsec / 1e9;
+    struct timespec tp1;
+    clock_gettime(CLOCK_REALTIME, &tp1);
+    return (double)tp1.tv_sec + (double)tp1.tv_nsec / 1e9;
 }
 
 void start_time()
 {
-  startSecs = getTime();
-  return;
+    startSecs = getTime();
+    return;
 }
 
 void end_time()
 {
-  secs = getTime() - startSecs;
-  return;
+    secs = getTime() - startSecs;
+    return;
 }
 /*
 int writeFile(int use, int dsize)
 {
     int  p;
 
-    FILE* file = fopen(testFile, "w+"); 
+    FILE* file = fopen(testFile, "w+");
     if (file == NULL)
     {
         sprintf(resultchars, " Cannot open %s for writing\n", testFile);
@@ -84,18 +84,18 @@ int writeFile(int use, int dsize)
 int writeFile(int use, int dsize)
 {
     int  p;
-   
+
     if (largeFile) start_time();
 
     if (useCache)
     {
-          handle = open(testFile, O_WRONLY | O_CREAT | O_TRUNC,
-                                  S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+        handle = open(testFile, O_WRONLY | O_CREAT | O_TRUNC,
+                      S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
     }
-    else  
+    else
     {
-         handle = open(testFile, O_WRONLY | O_CREAT | O_TRUNC | O_DIRECT | O_SYNC,
-                                  S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP| S_IROTH | S_IWOTH); // O_DIRECT | O_SYNC
+        handle = open(testFile, O_WRONLY | O_CREAT | O_TRUNC | O_DIRECT | O_SYNC,
+                      S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP| S_IROTH | S_IWOTH); // O_DIRECT | O_SYNC
     }
     if (handle == -1)
     {
@@ -105,14 +105,14 @@ int writeFile(int use, int dsize)
 
     for (p=0; p<use; p++)
     {
-       if (write(handle, dataOut, dsize) != dsize )
-       {
+        if (write(handle, dataOut, dsize) != dsize )
+        {
             sprintf(resultchars," Error writing file %s block %d\n", testFile, p+1);
             return 0;
         }
     }
     close(handle);
-    
+
     if (largeFile) end_time();
     return 1;
 }
@@ -122,7 +122,7 @@ int readFile(int use, int dsize)
     int p;
 
     if (largeFile) start_time();
-    
+
     handle = open(testFile, O_RDONLY, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
     if (handle == -1)
     {
@@ -136,8 +136,8 @@ int readFile(int use, int dsize)
         {
             sprintf(resultchars," Error reading file %s block %d\n", testFile, p+1);
             return 0;
-        }           
- 
+        }
+
     }
     close(handle);
     if (largeFile) end_time();
@@ -158,25 +158,25 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
     int fileMBrand;
     int totalf;
     int rdonly = 0;
-    
+
     double mbps;
     double msecs;
     double cc;
     double maxdsecs = 0;
-    
+
     char wr[14][14];
 
-    const char * filePath = (*env)->GetStringUTFChars( env, path , NULL ) ;
-    sprintf(partFile, "zzztestz%d", dev); 
-        
+    const char * filePath = (*env)->GetStringUTFChars( env, path, NULL ) ;
+    sprintf(partFile, "zzztestz%d", dev);
+
     if (test == -1)
     {
-        sprintf(testFile, "%szzztestzz", filePath); 
-        handle = open(testFile, O_WRONLY | O_CREAT); 
+        sprintf(testFile, "%szzztestzz", filePath);
+        handle = open(testFile, O_WRONLY | O_CREAT);
         if (handle == -1)
         {
-           sprintf(resultchars, " Cannot open %s for writing\n", testFile);
-           return (*env)->NewStringUTF(env, resultchars);
+            sprintf(resultchars, " Cannot open %s for writing\n", testFile);
+            return (*env)->NewStringUTF(env, resultchars);
         }
         else
         {
@@ -184,12 +184,12 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
             handle = open(testFile, O_WRONLY | O_CREAT | O_DIRECT);
             if (handle == -1)
             {
-               sprintf(resultchars, " No O_DIRECT");
+                sprintf(resultchars, " No O_DIRECT");
             }
             else
             {
-               close (handle);
-               sprintf(resultchars, " OK");
+                close (handle);
+                sprintf(resultchars, " OK");
             }
             return (*env)->NewStringUTF(env, resultchars);
         }
@@ -199,12 +199,12 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
         test = 5;
         rdonly = 1;
     }
-    
+
     if (test == 99)
     {
         for (f=1; f<files+1; f++)
         {
-            sprintf(testFile, "%s%s%d", filePath, partFile, f); 
+            sprintf(testFile, "%s%s%d", filePath, partFile, f);
             remove(testFile);
         }
 
@@ -223,7 +223,7 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
     sprintf(resultchars, " ");
 
     // Large Files
-    
+
     useCache = 0;
     if (cache == 1) useCache = 1;
 
@@ -236,23 +236,23 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
         fileMB = 4;
         useCache = 1;
     }
-     
+
     c = 0;
     if (test < 6)
     {
         // Write
-       
+
         for (f=1; f<files+1; f++)
         {
             if (rdonly == 0)
             {
-                sprintf(testFile, "%s%s%d", filePath, partFile, f); 
+                sprintf(testFile, "%s%s%d", filePath, partFile, f);
                 if (!writeFile(fileMB, dataSize))
                 {
                     for (f2=0; f2<f; f2++)
                     {
-                       sprintf(testFile, "%s%s%d", filePath, partFile, f2+1);       
-                       remove(testFile);
+                        sprintf(testFile, "%s%s%d", filePath, partFile, f2+1);
+                        remove(testFile);
                     }
                     return (*env)->NewStringUTF(env, resultchars);
                 }
@@ -271,14 +271,14 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
 
         for (f=1; f<files+1; f++)
         {
-            sprintf(testFile, "%s%s%d", filePath, partFile, f); 
-            if (!readFile(fileMB, dataSize))  
+            sprintf(testFile, "%s%s%d", filePath, partFile, f);
+            if (!readFile(fileMB, dataSize))
             {
                 for (f=1; f<files+1; f++)
                 {
-                  sprintf(testFile, "%s%s%d", filePath, partFile, f); 
-                  remove(testFile);
-                }  
+                    sprintf(testFile, "%s%s%d", filePath, partFile, f);
+                    remove(testFile);
+                }
                 return (*env)->NewStringUTF(env, resultchars);
             }
             mbps = (double)fileMB * (double)dataSize/ 1000000.0 / secs;
@@ -289,7 +289,7 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
         {
             for (f=1; f<files+1; f++)
             {
-                sprintf(testFile, "%s%s%d", filePath, partFile, f); 
+                sprintf(testFile, "%s%s%d", filePath, partFile, f);
                 remove(testFile);
             }
         }
@@ -298,24 +298,24 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
     else if (test == 9)
     {
         // Random
-        
+
         fileMBrand = 8;
         randBlocks = fileMBrand * 1024;
         blockSize = 1024;
         srand(123);
 
         // Write
-    
-        sprintf(testFile, "%s%srand", filePath, partFile); 
+
+        sprintf(testFile, "%s%srand", filePath, partFile);
         if (!writeFile(fileMBrand, dataSize))
         {
             remove(testFile);
             return (*env)->NewStringUTF(env, resultchars);
         }
         close (handle);
-   
-       // Random Read
-        
+
+        // Random Read
+
         c = 3;
         for (p=4; p<fileMBrand+1; p=p*2)
         {
@@ -349,24 +349,24 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
             while (secs < 1.0);
             msecs = 1000.0 * secs / cc;
             sprintf(wr[c], "%7.2f", msecs);
-            c = c + 1;            
+            c = c + 1;
             close (handle);
         }
-        
-       // Random Write
-        
+
+        // Random Write
+
         c = 0;
         for (p=4; p<fileMBrand+1; p=p*2)
         {
             handle = open(testFile, O_WRONLY | O_SYNC,
-                                      S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+                          S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
             if (handle == -1)
             {
                 sprintf(resultchars, " Cannot open %s for writing\n", testFile);
                 remove(testFile);
                 return (*env)->NewStringUTF(env, resultchars);
             }
-        
+
             cc = 0.0;
             start_time();
             do
@@ -389,34 +389,34 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
             while (secs < 1.0);
             msecs = 1000.0 * secs / cc;
             sprintf(wr[c], "%7.2f", msecs);
-            c = c + 1;            
+            c = c + 1;
             close (handle);
-         }        
-         remove(testFile);
-         sprintf(resultchars,  " msecs %s%s%s%s%s%s\n", wr[0], wr[1], wr[2], wr[3], wr[4], wr[5]); 
+        }
+        remove(testFile);
+        sprintf(resultchars,  " msecs %s%s%s%s%s%s\n", wr[0], wr[1], wr[2], wr[3], wr[4], wr[5]);
     }
     else if (test == 13)
     {
         // Small Files
-    
+
         largeFile = 0;
         useCache = 0;
         if (cache == 1) useCache = 1;
         f1 = 1000;
         f2 = 1200;
         totalf = f2 - f1;
-        c = 0;       
-   
+        c = 0;
+
         for (fileKB=4; fileKB<17; fileKB=fileKB*2)
         {
             if (fileKB > 4) sleep(5);
-            
+
             // Write
 
             start_time();
             for (f=f1; f<f2; f++)
             {
-                sprintf(testFile, "%s%s%d", filePath, partFile, f); 
+                sprintf(testFile, "%s%s%d", filePath, partFile, f);
                 if (!writeFile(1, smallSize * fileKB))
                 {
                     for (f=f1; f<f2; f++)
@@ -435,16 +435,16 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
             sprintf(wr[c + 6], "%7.2f", msecs);
 
             // Read
-            
+
             start_time();
             for (f=f1; f<f2; f++)
-            { 
+            {
                 sprintf(testFile, "%s%s%d", filePath, partFile, f);
                 if (!readFile(1, smallSize * fileKB))
                 {
                     for (f=f1; f<f2; f++)
                     {
-                        sprintf(testFile, "%s%s%d", filePath, partFile, f); 
+                        sprintf(testFile, "%s%s%d", filePath, partFile, f);
                         remove(testFile);
                     }
                     return (*env)->NewStringUTF(env, resultchars);
@@ -455,11 +455,11 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
             msecs = secs * 1000.0 / (double)totalf;
             sprintf(wr[c + 3], "%7.2f", mbps);
             sprintf(wr[c + 9], "%7.2f", msecs);
-            
+
             start_time();
             for (f=f1; f<f2; f++)
             {
-                sprintf(testFile, "%s%s%d", filePath, partFile, f); 
+                sprintf(testFile, "%s%s%d", filePath, partFile, f);
                 remove(testFile);
             }
             end_time();
@@ -471,11 +471,11 @@ JNIEXPORT jstring JNICALL Java_de_grinder_android_1fi_Workload_IO_1doIt(JNIEnv *
 
 
         sprintf(resultchars,  " MB/sec%s%s%s%s%s%s%s\n msecs %s%s%s%s%s%s%s\n",
-                                     wr[0], wr[1], wr[2], wr[3], wr[ 4], wr[ 5], wr[12],
-                                     wr[6], wr[7], wr[8], wr[9], wr[10], wr[11], wr[13]);
+                wr[0], wr[1], wr[2], wr[3], wr[ 4], wr[ 5], wr[12],
+                wr[6], wr[7], wr[8], wr[9], wr[10], wr[11], wr[13]);
 
-    }    
+    }
     return (*env)->NewStringUTF(env, resultchars);
 }
 
-      
+
